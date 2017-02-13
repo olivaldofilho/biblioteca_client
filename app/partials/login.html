@@ -1,0 +1,15 @@
+<!-- app/partials/login.html -->
+
+<h1 class="text-center">Login</h1>
+<form>        
+    <div class="form-group">
+        <label for="login">Usuário</label>
+        <input type="text" class="form-control" id="login" placeholder="Login" ng-model="vm.user.email">
+    </div>    
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.user.password">
+    </div>    
+    <button ng-click="pesquisar" type="submit" class="btn btn-primary">Logar</button>
+    <a href="#/<home></home>" class="btn btn-default">Sair</a>
+</form>

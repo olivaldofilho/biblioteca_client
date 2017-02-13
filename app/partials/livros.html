@@ -1,0 +1,28 @@
+<!-- app/partials/livros.html -->
+
+<h1 class="text-center">Pesquisa de Livros</h1>
+
+<p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+
+<a style="padding: 5px; width: 100px" ng-href="#/livro" class="btn btn-primary">Novo</a>
+
+<input ng-model="filtro" type="search" placeholder="parte do nome">
+
+<p ng-show="livros.length">Contatos cadastrados: {{livros.length}}</p>
+
+<p class="text-info" ng-hide="livros.length">Não há livros cadastrados</p>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>Id</th>            
+            <th>Descricao</th>            
+        </tr>
+        <tr ng-repeat="livro in livros | filter:filtro">
+            <td>{{livro.id}}</td>
+            <td>
+                <a ng-href="#/livro/{{livro.id}}">{{livro.descricao}}</a>
+            </td>            
+        </tr>
+    </table>         
+</div>

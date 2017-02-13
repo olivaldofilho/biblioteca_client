@@ -1,0 +1,32 @@
+<h1 class="text-center">Cadastro de Livros</h1>
+<form>    
+    <div classe="form-group">
+        <label for="id">Id</label>
+        <input type="text" readonly class="form-control" id="id" name="id" ng-model="contato._id">
+    </div>
+    <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input type="text" class="form-control" id="isbn" placeholder="entre com o isbn" ng-model="vm.user.email">
+    </div>
+    <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <input type="text" class="form-control" id="descricao" placeholder="entre com a descrição do livro" ng-model="vm.user.email">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="vm.user.password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile" ng-model="vm.user.file">
+        <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="checkbox">
+        <label>
+        <input type="checkbox" ng-model="vm.user.checked"> Check me out
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="vm.submit(vm.user)">Submit</button>
+    <button ng-click="pesquisar" type="submit" class="btn btn-primary">Salvar</button>
+    <a href="#/<home></home>" class="btn btn-default">Voltar</a>
+</form>
