@@ -1,4 +1,4 @@
-angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial'])
+angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngMdIcons'])
     .config(function($routeProvider, $locationProvider){    
     
     /*$routeProvider.when('/home', {

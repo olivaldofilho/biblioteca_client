@@ -1,9 +1,56 @@
-angular.module('biblioteca_client').controller('home2', function ($scope, $timeout, $mdSidenav, $log) {
+angular.module('biblioteca_client').controller('home2', function ($scope, $timeout, $mdSidenav, $log, $mdBottomSheet, $mdDialog) {
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.toggleRight = buildToggler('right');
+    
     $scope.isOpenRight = function(){
-      return $mdSidenav('right').isOpen();
+        return $mdSidenav('right').isOpen();
     };
+
+    $scope.toggleSidenav = function(menuId) {
+        $mdSidenav(menuId).toggle();
+    };
+
+    $scope.menu = [
+        {
+            link : '#/livro',
+            title: 'Livro',
+            icon: 'dashboard'
+        },
+        {
+            link : '',
+            title: 'Clientes',
+            icon: 'group'
+        },
+        {
+            link : '',
+            title: 'Messages',
+            icon: 'message'
+        }
+        ];
+    $scope.admin = [
+        {
+            link : '',
+            title: 'Trash',
+            icon: 'delete'
+        },
+        {
+            link : 'showListBottomSheet($event)',
+            title: 'Settings',
+            icon: 'settings'
+        }
+  ];
+
+  $scope.alert = '';
+  $scope.showListBottomSheet = function($event) {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+        template: '<md-bottom-sheet class="md-list md-has-header"> <md-subheader>Settings</md-subheader> <md-list> <md-item ng-repeat="item in items"><md-item-content md-ink-ripple flex class="inset"> <a flex aria-label="{{item.name}}" ng-click="listItemClick($index)"> <span class="md-inline-list-icon-label">{{ item.name }}</span> </a></md-item-content> </md-item> </md-list></md-bottom-sheet>',
+      controller: 'ListBottomSheetCtrl',
+      targetEvent: $event
+    }).then(function(clickedItem) {
+      $scope.alert = clickedItem.name + ' clicked!';
+    });
+  };
 
     /**
      * Supplies a function that will continue to operate until the
@@ -68,7 +115,6 @@ angular.module('biblioteca_client').controller('home2', function ($scope, $timeo
         });
     };
   });
-
 
 /**
 Copyright 2016 Google Inc. All Rights Reserved. 
