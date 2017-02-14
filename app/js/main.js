@@ -1,9 +1,14 @@
-angular.module('biblioteca_client', ['ngRoute', 'ngResource'])
+angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial'])
     .config(function($routeProvider, $locationProvider){    
     
     /*$routeProvider.when('/home', {
         templateUrl: 'home.html',
         controller: 'home'
+    });*/
+
+    /*$routeProvider.when('/home2', {
+        templateUrl: 'partials/home2.html',
+        controller: 'home2'
     });*/
 
     $routeProvider.when('/login', {
@@ -24,15 +29,6 @@ angular.module('biblioteca_client', ['ngRoute', 'ngResource'])
     $routeProvider.when('/livros', {
         templateUrl: 'partials/livros.html',
         controller: 'livros'
-    });
-
-    $routeProvider.when('/basicusage', {
-        templateUrl: 'partials/basicusage.html',
-        controller: 'basicusage'
-    });
-
-     $routeProvider.when('/input', {
-        templateUrl: 'partials/input.html'
     });
 
     $locationProvider.hashPrefix('');    

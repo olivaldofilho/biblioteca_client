@@ -1,6 +1,6 @@
-angular.module('biblioteca_client').controller('livros', function($scope, $resource){
-    var Livro = $resource('http://localhost:10000/api/livros/');
-    $scope.livros = [];
+angular.module('biblioteca_client').controller('livros', function($scope, $resource, Livro){
+    //var Livro = $resource('http://localhost:10000/api/livros/');
+    //$scope.livros = [];
     $scope.total = 0;
     $scope.filtro = '';
     $scope.mensagem = {texto: ''};

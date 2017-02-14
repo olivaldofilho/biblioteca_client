@@ -17,7 +17,7 @@ angular.module('biblioteca_client').controller('livro', function($scope, $resour
     $scope.delete = function(){
         var idLivro = $scope.livro.id;
         Livro.delete({idLivro}, function(livro) {
-            $scope.mensagem = {texto: 'Livro excluído com sucesso! ' + idLivro};            
+            $scope.mensagem = {texto: 'Livro excluído com sucesso! '};            
 			$scope.livro = livro;
 		}, 
 		function(erro) {		    

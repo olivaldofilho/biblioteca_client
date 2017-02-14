@@ -1,34 +1,40 @@
 <!-- app/partials/livro.html -->
-
-<h1 class="text-center">Cadastro de Livros</h1>
-<p ng-show="mensagem.texto">{{mensagem.texto}}</p>
-<p ng-show="mensagemErro.texto">{{mensagemErro.texto}} + {{mensagemErro.status}}</p>
-
-<form>      
-    <div classe="form-group">
-        <label for="id">Id</label>
-        <input type="text" readonly class="form-control" id="id" name="id" ng-model="livro.id">
-    </div>
-    <div class="form-group">
-        <label for="isbn">ISBN</label>
-        <input type="text" class="form-control" id="isbn" placeholder="entre com o isbn" ng-model="livro.isbn">
-    </div>
-    <div class="form-group">
-        <label for="titulo">Título</label>
-        <input type="text" class="form-control" id="titulo" placeholder="entre com o título do livro" ng-model="livro.titulo">
-    </div>
-    <div class="form-group">
-        <label for="descricao">Descrição</label>
-        <input type="text" class="form-control" id="descricao" placeholder="entre com a descrição do livro" ng-model="livro.descricao">
-    </div>
-    <div class="checkbox">
-        <label>
-        <input type="checkbox" ng-model="vm.user.checked"> Inativo
-        </label>
-    </div>
-    
-    <a style="padding: 5px; width: 100px" ng-href="#/livro" class="btn btn-primary">Novo</a>
-    <button style="padding: 5px; width: 100px" type="button" ng-click="salva()" class="btn btn-primary">Salvar</button>
-    <a style="padding: 5px; width: 100px" ng-href="#/livros" class="btn btn-primary">Pesquisar</a>
-    <button style="padding: 5px; width: 100px" type="button" ng-click="delete()" class="btn btn-primary">Excluir</button>    
-</form>
+<md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Cadastro de Livros</span> 
+        <span class="md-subhead">Dados do livro</span>       
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <div layout="row">
+            <form>      
+                <div classe="form-group">    
+                    <md-input-container class="md-block" flex-gt-xs="">
+                        <label>Id</label>
+                        <input ng-model="livro.id" type="text" disabled="">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>ISBN</label>
+                        <input ng-model="livro.isbn" type="text">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Título</label>
+                        <input ng-model="livro.titulo" type="text">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Descrição</label>
+                        <input ng-model="livro.descricao" type="text">
+                    </md-input-container>
+                </div>
+                
+                <a style="padding: 5px; width: 100px" ng-href="#/livro" class="btn btn-primary">Novo</a>
+                <button style="padding: 5px; width: 100px" type="button" ng-click="salva()" class="btn btn-primary">Salvar</button>
+                <a style="padding: 5px; width: 100px" ng-href="#/livros" class="btn btn-primary">Pesquisar</a>
+                <button style="padding: 5px; width: 100px" type="button" ng-click="delete()" class="btn btn-primary">Excluir</button>    
+            </form>
+        </div>
+    </md-card-content>
+    <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+    <p ng-show="mensagemErro.texto">{{mensagemErro.texto}} + {{mensagemErro.status}}</p>
+</md-card>

@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default" role="navigation">
+<div layout="column" style="height:95%;" ng-cloak="" class="sidenavdemoBasicUsage" ng-controller="home2">
+    <section layout="row" flex="">
+        <md-content>
+            <br>
+            <md-toolbar class="md-hue-2">
+                <md-content>                
+                    <div class="md-toolbar-tools">
+                        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="toggleLeft()">
+                            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                        </md-button>
+                        <!--<a class="navbar-brand">Biblioteca APP</a>-->
+                        <h2 flex="" md-truncate="">Toolbar with Disabled/Enabled Icon Buttons</h2>        
+                    </div>
+                </md-content>
+            </md-toolbar>
+        </md-content>
+
+    <md-sidenav layout="column"  class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-whiteframe="4">
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Biblioteca APP</h1>
+        </md-toolbar>
+        <md-content layout-padding="" ng-controller="LeftCtrl">
+            <md-button ng-click="close()" href="#/livro" class="md-primary">
+                Livro
+            </md-button>
+            <p hide="" show-gt-md="">
+                This sidenav is locked open on your device. To go back to the default behavior,
+                narrow your display.
+            </p>
+        </md-content>
+    </md-sidenav>
+
+<ui-view layout="column" layout-fill layout-padding>
+            <div ng-view></div>  
+        </ui-view>
+    <md-content flex="" layout-fill layout-padding="">
+      <div layout="column" layout-align="top center">
+        
+      </div>
+      <div flex=""></div>
+    </md-content>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Sidenav Right</h1>
+      </md-toolbar>
+      <md-content ng-controller="RightCtrl" layout-padding="">
+        <form>
+          <md-input-container>
+            <label for="testInput">Test input</label>
+            <input type="text" id="testInput" ng-model="data" md-autofocus="">
+          </md-input-container>
+        </form>
+        <md-button ng-click="close()" class="md-primary">
+          Close Sidenav Right
+        </md-button>
+      </md-content>
+
+    </md-sidenav>
+
+  </section>
+
+</div>
+</nav>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+-->
