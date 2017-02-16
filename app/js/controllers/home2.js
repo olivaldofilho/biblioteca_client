@@ -17,6 +17,11 @@ angular.module('biblioteca_client').controller('home2', function ($scope, $timeo
             icon: 'dashboard'
         },
         {
+            link : '#/autor',
+            title: 'Autores',
+            icon: 'group'
+        },
+        {
             link : '',
             title: 'Clientes',
             icon: 'group'

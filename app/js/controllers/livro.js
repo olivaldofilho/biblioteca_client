@@ -1,6 +1,8 @@
-angular.module('biblioteca_client').controller('livro', function($scope, $resource, $routeParams, Livro){
+angular.module('biblioteca_client')
+    .controller('livro', function(Livro, Autor, $scope, $resource, $routeParams, $cookies){
     //var Livro = $resource('http://localhost:10000/api/livro/:idLivro');
     //var LivroSalva = $resource('http://localhost:10000/api/livro/');
+    
     $scope.mensagem = {texto: ''};
     $scope.mensagemErro = {
         texto: '',
@@ -54,6 +56,24 @@ angular.module('biblioteca_client').controller('livro', function($scope, $resour
         //$scope.mensagem = {texto: 'Contato não existe. Novo contato. '};
         $scope.livro = new Livro();        
     };
+
+    function getAutores(){
+        //debugger;
+        Autor.query(
+            function(autores) { 
+                $scope.autores = autores;                                
+            }, 
+            function(erro) {
+                $scope.mensagem = {texto: 'Não foi possível obter a lista de autores ' + erro};                
+            });
+    
+        /*livro.query(function(livros){
+            $scope.livros = livros;
+            
+            console.log($scope.livros);
+        });*/
+    }
+    getAutores();
 });
 
 
