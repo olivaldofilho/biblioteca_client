@@ -1,0 +1,28 @@
+<!-- app/partials/livros.html -->
+
+<h1 class="text-center">Pesquisa de Autores</h1>
+
+<p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+
+<a style="padding: 5px; width: 100px" ng-href="#/autor" class="btn btn-primary">Novo</a>
+
+<input ng-model="filtro" type="search" placeholder="parte do nome">
+
+<p ng-show="autores.length">Autores cadastrados: {{autores.length}}</p>
+
+<p class="text-info" ng-hide="autores.length">Não há autores cadastrados</p>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>Id</th>            
+            <th>Nome</th>            
+        </tr>
+        <tr ng-repeat="autor in autores | filter:filtro">
+            <td>{{autor.id}}</td>
+            <td>
+                <a ng-href="#/autor/{{autor.id}}">{{autor.nome}}</a>
+            </td>            
+        </tr>
+    </table>         
+</div>

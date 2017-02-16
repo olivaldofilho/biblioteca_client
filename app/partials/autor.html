@@ -1,0 +1,33 @@
+<!-- app/partials/autor.html -->
+<md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Cadastro de Autores</span> 
+        <span class="md-subhead">Dados do Autor</span>       
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <div layout="row">
+            <form>      
+                <div classe="form-group">    
+                    <md-input-container class="md-block" flex-gt-xs="">
+                        <label>Id</label>
+                        <input ng-model="autor.id" type="text" disabled="">
+                    </md-input-container>                    
+                    <md-input-container class="md-block">
+                        <label>Nome</label>
+                        <input ng-model="autor.nome" type="text">
+                    </md-input-container>                   
+                </div>                
+                <a style="padding: 2px; width: 70px" ng-href="#/autor" class="btn btn-primary">Novo</a>
+                <button style="padding: 2px; width: 70px" type="button" ng-click="salva()" class="btn btn-primary">Salvar</button>
+                <a style="padding: 2px; width: 70px" ng-href="#/autores" class="btn btn-primary">Pesquisar</a>
+                <button style="padding: 2px; width: 70px" type="button" ng-click="delete()" class="btn btn-primary">Excluir</button>    
+            </form>
+        </div>
+    </md-card-content>
+    <div>
+        <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+        <p ng-show="mensagemErro.texto">{{mensagemErro.texto}} + {{mensagemErro.status}}</p>
+    </div>    
+</md-card>
