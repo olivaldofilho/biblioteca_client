@@ -1,28 +1,47 @@
 <!-- app/partials/livros.html -->
+<div layout-align="center" class="col-md-8 col-md-offset-3">
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Pesquisa de Autores</span> 
+                <!--<span class="md-subhead">Grid</span>       -->
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content> 
+            <div>
+                <form>
+                    <a style="padding: 5px; width: 100px" ng-href="#/autor" class="btn btn-primary">Novo</a>
 
-<h1 class="text-center">Pesquisa de Autores</h1>
+                    <input ng-model="filtro" type="search" placeholder="parte do nome">
 
-<p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+                    <p ng-show="autores.length">Contatos cadastrados: {{autores.length}}</p>
 
-<a style="padding: 5px; width: 100px" ng-href="#/autor" class="btn btn-primary">Novo</a>
-
-<input ng-model="filtro" type="search" placeholder="parte do nome">
-
-<p ng-show="autores.length">Autores cadastrados: {{autores.length}}</p>
-
-<p class="text-info" ng-hide="autores.length">Não há autores cadastrados</p>
-
-<div class="table-responsive">
-    <table class="table table-hover">
-        <tr>
-            <th>Id</th>            
-            <th>Nome</th>            
-        </tr>
-        <tr ng-repeat="autor in autores | filter:filtro">
-            <td>{{autor.id}}</td>
-            <td>
-                <a ng-href="#/autor/{{autor.id}}">{{autor.nome}}</a>
-            </td>            
-        </tr>
-    </table>         
+                    <p class="text-info" ng-hide="autores.length">Não há autores cadastrados</p>
+                    <!--<md-content layout-padding="">    -->
+                        <div class="table-responsive">
+                            <table style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>            
+                                        <th>Nome</th>            
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="autor in autores | filter:filtro">
+                                        <td>{{autor.id}}</td>                                        
+                                        <td>
+                                            <a ng-href="#/autor/{{autor.id}}">{{autor.nome}}</a>
+                                        </td>                                       
+                                    </tr>
+                                </tbody>
+                            </table>         
+                        </div>
+                    <!--</md-content> -->
+                </form>
+            </div>
+         </md-card-content>
+         <div>
+             <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+         </div>    
+    </md-card>
 </div>

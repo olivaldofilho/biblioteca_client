@@ -1,32 +1,59 @@
 <!-- app/partials/livros.html -->
-
-<h1 class="text-center">Pesquisa de Livros</h1>
-
-<p ng-show="mensagem.texto">{{mensagem.texto}}</p>
-
-<a style="padding: 5px; width: 100px" ng-href="#/livro" class="btn btn-primary">Novo</a>
-
-<input ng-model="filtro" type="search" placeholder="parte do nome">
-
-<p ng-show="livros.length">Contatos cadastrados: {{livros.length}}</p>
-
-<p class="text-info" ng-hide="livros.length">Não há livros cadastrados</p>
-
-<div class="table-responsive">
-    <table class="table table-hover">
-        <tr>
-            <th>Id</th>
-            <th>ISBN</th>
-            <th>Descricao</th>
-            <th>Localização</th>            
-        </tr>
-        <tr ng-repeat="livro in livros | filter:filtro">
-            <td>{{livro.id}}</td>
-            <td>{{livro.isbn}}</td>
-            <td>
-                <a ng-href="#/livro/{{livro.id}}">{{livro.descricao}}</a>
-            </td>
-            <td>{{livro.localizacao}}</td>            
-        </tr>
-    </table>         
-</div>
+<!--<div layout-align="center" class="col-md-8 col-md-offset-3">-->
+<md-content layout-align="center" class="col-md-8 col-md-offset-3">    
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Pesquisa de Livros</span> 
+                <!--<span class="md-subhead">Grid</span>       -->
+            </md-card-title-text>
+        </md-card-title>
+     <!--</md-card>
+     <md-card>       -->
+        <md-card-content>
+            <div
+                <form>
+                    <md-content layout-padding="">
+                        <md-input-container class="md-block" flex-gt-xs="">
+                            <label>Filtro</label>
+                            <input ng-model="filtro" type="search" placeholder="parte do nome">
+                        </md-input-container>                                                    
+                    </md-content>    
+                    <md-content layout-padding>                    
+                        <div class="table-responsive">
+                            <table style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>ISBN</th>
+                                        <th>Descricao</th>
+                                        <th>Localização</th>            
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="livro in livros | filter:filtro">
+                                        <td>{{livro.id}}</td>
+                                        <td>{{livro.isbn}}</td>
+                                        <td>
+                                            <a ng-href="#/livro/{{livro.id}}">{{livro.descricao}}</a>
+                                        </td>
+                                        <td>{{livro.localizacao}}</td>            
+                                    </tr>
+                                </tbody>
+                            </table>         
+                        </div>
+                    </md-content>                    
+                </form
+                 </div>
+         </md-card-content>      
+         <md-card-content>
+                        <a style="padding: 5px; width: 100px" ng-href="#/livro" class="btn btn-primary">Novo</a>
+                        <p class="text-info" ng-hide="livros.length">Não há livros cadastrados</p>
+                        <p ng-show="livros.length">Contatos cadastrados: {{livros.length}}</p>
+                        <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+                    </md-card-content>   
+          
+          </md-card>  
+    
+</<md-content>    
+<!--</div>-->

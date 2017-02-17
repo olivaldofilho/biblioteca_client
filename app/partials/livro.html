@@ -1,58 +1,65 @@
 <!-- app/partials/livro.html -->
-<md-card>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline">Cadastro de Livros</span> 
-        <span class="md-subhead">Dados do livro</span>       
-      </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
-        <div layout="row">
-            <form> 
-                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
-                    <md-input-container class="md-block" flex-gt-xs="">
-                        <label>Id</label>
-                        <input ng-model="livro.id" type="text" disabled="">
-                    </md-input-container>
-                    <md-input-container class="md-block">
-                        <label>ISBN</label>
-                        <input ng-model="livro.isbn" type="text">
-                    </md-input-container>
-                </md-content>
-                <md-content layout-padding="">
-                    <div classe="form-group">                    
-                        <md-input-container class="md-block">
+<!--<div flex="100" layout="row" layout-align="center">-->
+<md-content md-theme="docs-dark" layout-align="center" layout-gt-sm="row" layout-padding="">
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Cadastro de Livros</span> 
+                <!--<span class="md-subhead">Dados do livro</span>       -->
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content style="width:600px">
+            <div>
+                <form name=livroForm>
+                    <!--<div layout-gt-xs="row"> -->
+                    <md-content layout-gt-sm="row">                        
+                        <md-input-container style="width:50">
+                            <label>Id</label>
+                            <input ng-model="livro.id" type="text" disabled="">
+                        </md-input-container>
+                        <md-input-container style="width:225"> 
+                            <label>ISBN</label>
+                            <input ng-model="livro.isbn" type="text">                        
+                        </md-input-container>
+                         <md-input-container style="width:250">
+                            <label>Localização</label>
+                            <input ng-model="livro.localizacao" type="text">
+                        </md-input-container>                         
+                        <!--</div>-->
+                    </md-content>
+                    <md-content layout-gt-sm="row">
+                        <md-input-container style="width:525">
                             <label>Título</label>
                             <input ng-model="livro.titulo" type="text">
                         </md-input-container>
-                        <md-input-container class="md-block">
+                    </md-content>
+                    <md-content layout-gt-sm="row">                        
+                        <md-input-container style="width:525">
                             <label>Descrição</label>
                             <input ng-model="livro.descricao" type="text">
                         </md-input-container>
-                        <md-input-container class="md-block">
-                            <label>Localização</label>
-                            <input ng-model="livro.localizacao" type="text">
-                        </md-input-container>
-                        <md-input-container class="md-block">
+                    </md-content>
+                    <md-content layout-gt-sm="row">                             
+                        <md-input-container style="width:525">
                             <label>Autor</label>
                             <md-select ng-model="livro.idautor">
                                 <md-option><em>None</em></md-option>
-                                <md-option ng-repeat="autor in autores" ng-value="autor.id">
-                                {{autor.nome}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-                    </div>
-                </md-content>                
-                <a style="padding: 2px; width: 70px" ng-href="#/livro" class="btn btn-primary">Novo</a>
-                <button style="padding: 2px; width: 70px" type="button" ng-click="salva()" class="btn btn-primary">Salvar</button>
-                <a style="padding: 2px; width: 70px" ng-href="#/livros" class="btn btn-primary">Pesquisar</a>
-                <button style="padding: 2px; width: 70px" type="button" ng-click="delete()" class="btn btn-primary">Excluir</button>    
-            </form>
-        </div>
-    </md-card-content>
-    <div>
-        <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
-        <p ng-show="mensagemErro.texto">{{mensagemErro.texto}} + {{mensagemErro.status}}</p>
-    </div>    
-</md-card>
+                                    <md-option ng-repeat="autor in autores" ng-value="autor.id">
+                                        {{autor.nome}}
+                                    </md-option>
+                                </md-select>
+                        </md-input-container>                                                                       
+                    </md-content>                    
+                </form>
+            </div>
+        </md-card-content>
+        <md-card-content>
+            <a style="padding: 2px; width: 70px" ng-href="#/livro" class="btn btn-primary">Novo</a>
+            <button style="padding: 2px; width: 70px" type="button" ng-click="salva()" class="btn btn-primary">Salvar</button>
+            <a style="padding: 2px; width: 70px" ng-href="#/livros" class="btn btn-primary">Pesquisar</a>
+            <button style="padding: 2px; width: 70px" type="button" ng-click="delete()" class="btn btn-primary">Excluir</button>       
+            <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+            <p ng-show="mensagemErro.texto">{{mensagemErro.texto}} + {{mensagemErro.status}}</p>        
+        <md-card-content>
+    </md-card>
+</md-content>
