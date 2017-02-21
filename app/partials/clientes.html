@@ -1,0 +1,47 @@
+<!-- app/partials/livros.html -->
+<div layout-align="center" class="col-md-8 col-md-offset-3">
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Pesquisa de Clientes</span> 
+                <!--<span class="md-subhead">Grid</span>       -->
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content> 
+            <div>
+                <form>
+                    <a style="padding: 5px; width: 100px" ng-href="#/cliente" class="btn btn-primary">Novo</a>
+
+                    <input ng-model="filtro" type="search" placeholder="parte do nome">
+
+                    <p ng-show="clientes.length">Contatos cadastrados: {{clientes.length}}</p>
+
+                    <p class="text-info" ng-hide="clientes.length">Não há clientes cadastrados</p>
+                    <!--<md-content layout-padding="">    -->
+                        <div class="table-responsive">
+                            <table style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>            
+                                        <th>Nome</th>            
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="cliente in clientes | filter:filtro">
+                                        <td>{{cliente.id}}</td>                                        
+                                        <td>
+                                            <a ng-href="#/cliente/{{cliente.id}}">{{cliente.nome}}</a>
+                                        </td>                                       
+                                    </tr>
+                                </tbody>
+                            </table>         
+                        </div>
+                    <!--</md-content> -->
+                </form>
+            </div>
+         </md-card-content>
+         <div>
+             <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+         </div>    
+    </md-card>
+</div>

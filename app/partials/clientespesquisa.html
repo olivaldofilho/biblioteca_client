@@ -1,0 +1,40 @@
+<md-dialog aria-label="Mango (Fruit)" style="width: 600px"> 
+    <md-content class="md-padding"> 
+        <form name="userForm"> 
+            <div layout layout-sm="column"> 
+                <md-input-container flex> 
+                    <label>Nome</label> 
+                    <input ng-model="user.firstName" placeholder="Placeholder text"> 
+                </md-input-container>               
+            </div>
+            <md-card-content> 
+                <div>
+                    <p ng-show="clientes.length">Contatos cadastrados: {{clientes.length}}</p>
+                    <p class="text-info" ng-hide="clientes.length">Não há clientes cadastrados</p>                    
+                    <div class="table-responsive">
+                        <table style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>            
+                                    <th>Nome</th>            
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="cliente in clientes | filter:filtro" ng-click='closeDialog(cliente)'>
+                                    <td>{{cliente.id}}</td>                                        
+                                    <td>
+                                        <a ng-click="">{{cliente.nome}}</a>
+                                    </td>                                       
+                                </tr>
+                            </tbody>
+                        </table>         
+                    </div>
+                </div>                    
+            </md-card-content>          
+        </form> 
+    </md-content>
+    <md-dialog-actions>
+        <span flex></span> 
+        <md-button ng-click="closeDialog('useful')" class="md-primary">Close Dialog</md-button>
+    </md-dialog-actions>    
+</md-dialog>

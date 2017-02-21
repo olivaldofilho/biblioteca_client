@@ -17,8 +17,12 @@ angular.module('biblioteca_client')
     }
 
     $scope.delete = function(){
-        var idLivro = $scope.livro.id;
-        Livro.delete({idLivro}, function(livro) {
+        var id = $scope.livro.id;
+        if (!id){
+            $scope.mensagem = {texto: 'Selecione um cadastro válido! '}; 
+            return;
+        }
+        Livro.delete({id}, function(livro) {
             $scope.mensagem = {texto: 'Livro excluído com sucesso! '};            
 			$scope.livro = livro;
 		}, 
@@ -42,10 +46,10 @@ angular.module('biblioteca_client')
                 $scope.livro = new Livro();                 
              });
     };        
-    var idLivro = $routeParams.livroId;
-    if (idLivro){        
-        Livro.get({idLivro}, function(livro) {
-            $scope.mensagem = {texto: 'Contrato encontrado! ' + idLivro};            
+    var id = $routeParams.id;
+    if (id){        
+        Livro.get({id}, function(livro) {
+            $scope.mensagem = {texto: 'Contrato encontrado! ' + id};            
 			$scope.livro = livro;
 		}, 
 		function(erro) {		    

@@ -18,6 +18,10 @@ angular.module('biblioteca_client')
 
     $scope.delete = function(){
         var id = $scope.autor.id;
+        if (!id){
+            $scope.mensagem = {texto: 'Selecione um cadastro válido! '}; 
+            return;
+        }
         Autor.delete({id}, function(autor) {
             $scope.mensagem = {texto: 'Autor excluído com sucesso! '};            
 			$scope.autor = autor;

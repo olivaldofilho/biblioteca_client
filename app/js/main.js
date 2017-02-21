@@ -1,17 +1,30 @@
-angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngMdIcons', 'ngCookies'])
-    .config(function($routeProvider, $locationProvider){    
-    
-    /*$routeProvider.when('/home', {
-        templateUrl: 'home.html',
-        controller: 'home'
-    });*/
-
-    /*$routeProvider.when('/home2', {
-        templateUrl: 'partials/home2.html',
-        controller: 'home2'
-    });*/
-
+angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngMdIcons', 'ngCookies', 'meusComponentes'])
+    .config(function($routeProvider, $locationProvider, $mdDateLocaleProvider){    
     $routeProvider
+        .when('/autor/:id?', {
+            templateUrl: 'partials/autor.html',
+            controller: 'autor'
+        })
+        .when('/autores', {
+            templateUrl: 'partials/autores.html',
+            controller: 'autores'
+        })        
+        .when('/cliente/:id?', {
+            templateUrl: 'partials/cliente.html',
+            controller: 'cliente'           
+        })
+        .when('/clientes', {
+            templateUrl: 'partials/clientes.html',
+            controller: 'clientes'           
+        })
+        .when('/livro/:id?', {
+            templateUrl: 'partials/livro.html',
+            controller: 'livro'
+        })
+        .when('/livros/', {
+            templateUrl: 'partials/livros.html',
+            controller: 'livros'
+        })
         .when('/login', {
             templateUrl: 'partials/login.html',
             controller: 'login'
@@ -19,33 +32,11 @@ angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngM
         .when('/login2', {
             templateUrl: 'partials/login2.html'
         })
-        .when('/livro', {
-            templateUrl: 'partials/livro.html',
-            controller: 'livro'
-        })
-        .when('/livro/:livroId', {
-            templateUrl: 'partials/livro.html',
-            controller: 'livro'
-        })
-        .when('/livros', {
-            templateUrl: 'partials/livros.html',
-            controller: 'livros'
-        })
-        .when('/autor', {
-            templateUrl: 'partials/autor.html',
-            controller: 'autor'
-        })
-        .when('/autor/:id', {
-            templateUrl: 'partials/autor.html',
-            controller: 'autor'
-        })
-        .when('/autores', {
-            templateUrl: 'partials/autores.html',
-            controller: 'autores'
-        })
+        .when('/requisicao', {
+            templateUrl: 'partials/requisicao.html',
+            controller: 'requisicao'
+        })         
         .otherwise({redirectTo: '/home'});
-
-
 
     /*$routeProvider.when('/login', {
         templateUrl: 'partials/login.html',

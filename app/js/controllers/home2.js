@@ -19,17 +19,17 @@ angular.module('biblioteca_client').controller('home2', function ($scope, $timeo
         {
             link : '#/autor',
             title: 'Autores',
-            icon: 'group'
+            icon: 'assignment_ind'
         },
         {
-            link : '',
+            link : '#/cliente',
             title: 'Clientes',
             icon: 'group'
         },
         {
-            link : '',
-            title: 'Messages',
-            icon: 'message'
+            link : '#/requisicao',
+            title: 'Requisição',
+            icon: 'list'
         }
         ];
     $scope.admin = [
@@ -40,7 +40,7 @@ angular.module('biblioteca_client').controller('home2', function ($scope, $timeo
         },
         {
             link : 'showListBottomSheet($event)',
-            title: 'Settings',
+            title: 'Configurações',
             icon: 'settings'
         }
   ];

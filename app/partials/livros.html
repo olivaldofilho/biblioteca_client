@@ -8,10 +8,8 @@
                 <!--<span class="md-subhead">Grid</span>       -->
             </md-card-title-text>
         </md-card-title>
-     <!--</md-card>
-     <md-card>       -->
         <md-card-content>
-            <div
+            <div>
                 <form>
                     <md-content layout-padding="">
                         <md-input-container class="md-block" flex-gt-xs="">
@@ -43,17 +41,16 @@
                             </table>         
                         </div>
                     </md-content>                    
-                </form
-                 </div>
-         </md-card-content>      
-         <md-card-content>
-                        <a style="padding: 5px; width: 100px" ng-href="#/livro" class="btn btn-primary">Novo</a>
-                        <p class="text-info" ng-hide="livros.length">Não há livros cadastrados</p>
-                        <p ng-show="livros.length">Contatos cadastrados: {{livros.length}}</p>
-                        <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
-                    </md-card-content>   
-          
-          </md-card>  
-    
-</<md-content>    
-<!--</div>-->
+                </form>
+            </div>
+         </md-card-content>
+         <md-card-actions>
+             <a style="padding: 5px; width: 100px" ng-href="#/livro" class="btn btn-primary">Novo</a>
+         </md-card-actions>
+         <md-card-footer>
+            <p class="text-info" ng-hide="livros.length">Não há livros cadastrados</p>
+            <p ng-show="livros.length">Contatos cadastrados: {{livros.length}}</p>
+            <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+         </md-card-footer>         
+    </md-card>    
+</md-content>
