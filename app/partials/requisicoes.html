@@ -1,0 +1,64 @@
+<!-- app/partials/livros.html -->
+<!--<div layout-align="center" class="col-md-8 col-md-offset-3">-->
+<md-content layout-align="center" class="col-md-8 col-md-offset-3">    
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Pesquisa de Requisições</span> 
+                <!--<span class="md-subhead">Grid</span>       -->
+            </md-card-title-text>            
+        </md-card-title>
+        <md-card-content>
+            <div>
+                <form>
+                    <md-content layout-padding>
+                        <md-input-container class="md-block" flex-gt-xs="">
+                            <label>Filtro</label>
+                            <input ng-model="filtro" uppercase type="search" placeholder="parte do nome">
+                        </md-input-container>                                                    
+                    </md-content>    
+                    <md-content layout-padding>                    
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>RETIRADA</th>
+                                        <th>DEVOLUÇÃO</th>
+                                        <th>CLIENTE</th>
+                                        <th>LIVRO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate = "requisicao in requisicoes | filter:filtro | itemsPerPage:5">
+                                        <td>{{requisicao.id}}</td>
+                                        <td>{{requisicao.data_retirada | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{requisicao.data_devolucao | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{requisicao.nome_cliente}}</td>
+                                        <td>{{requisicao.titulo_livro}}</td>
+                                        <td>
+                                            <md-icon md-svg-icon="img/icons/ic_edit_black_18px.svg" ng-click="editar(requisicao.id)" href="#/requisicao/{{requisicao.id}}"></md-icon>                                            
+                                            <!--<button class="btn btn-warning" ng-click="remove(contato)">Remover</button>-->
+                                        </td>          
+                                    </tr>
+                                </tbody>
+                                
+                            </table> 
+                                    
+                        </div>
+                    </md-content>                    
+                </form>
+                <dir-pagination-controls max-size="10" boundary-links="true"></dir-pagination-controls>
+            </div>
+         </md-card-content>
+         <md-card-actions>
+             
+             <a style="padding: 5px; width: 100px" ng-href="#/requisicao" class="btn btn-primary">Novo</a>
+         </md-card-actions>
+         <md-card-footer>
+            <p class="text-info" ng-hide="requisicoes.length">Não há requisições cadastradas</p>
+            <p ng-show="livros.length">Contatos cadastrados: {{requisicoes.length}}</p>
+            <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+         </md-card-footer>         
+    </md-card>    
+</md-content>

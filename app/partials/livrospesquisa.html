@@ -44,13 +44,14 @@
                 </form>
             </div>
          </md-card-content>
-         <md-card-actions>
-             
-         </md-card-actions>
-         <md-card-footer>
+        <md-card-actions>
+            <span flex></span> 
+            <md-button ng-click="closeDialog('useful')" class="md-primary">Fechar</md-button>
+        </md-card-actions>
+        <md-card-footer>
             <p class="text-info" ng-hide="livros.length">Não há livros cadastrados</p>
             <p ng-show="livros.length">Contatos cadastrados: {{livros.length}}</p>
             <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
-         </md-card-footer>         
+        </md-card-footer>         
     </md-card>    
 </md-content>

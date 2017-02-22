@@ -1,5 +1,15 @@
 <!--  app/index.html -->
 <html ng-app="biblioteca_client">
+    <style>
+        table, td  {
+            table-layout: table table-hover;
+            font-size: 12;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border: 1px none grey;
+            border-collapse: collapse;
+            padding: 1px;
+        }
+    </style>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">       
@@ -26,14 +36,16 @@
         <script src="lib/angular-cookies/angular-cookies.js"></script>
         <script src="lib/angular-route/angular-route.js"></script>
         <script src="lib/moment/moment.js"></script>
-               
-
         <script src="js/main.js"></script>
         <script src="lib/angular-resource/angular-resource.js"></script>
-        <script src="js/services/config.js"></script>
+        <script src="lib/angularUtils-pagination/dirPagination.js"></script>
+        
         <script src="js/services/autor.js"></script>
         <script src="js/services/cliente.js"></script>       
+        <script src="js/services/config.js"></script>
         <script src="js/services/livro.js"></script>
+        <script src="js/services/requisicao.js"></script>
+        
         <script src="js/controllers/autor.js"></script>
         <script src="js/controllers/autores.js"></script>
         <script src="js/controllers/cliente.js"></script>
@@ -46,6 +58,8 @@
         <script src="js/controllers/livrospesquisa.js"></script>        
         <script src="js/controllers/login.js"></script>
         <script src="js/controllers/requisicao.js"></script>
-        <script src="js/directives/meusComponentes.js"></script>       
+        <script src="js/controllers/requisicoes.js"></script>
+        
+        <script src="js/directives/uppercase.js"></script>
     </body>
 </html>

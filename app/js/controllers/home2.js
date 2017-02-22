@@ -12,11 +12,6 @@ angular.module('biblioteca_client').controller('home2', function ($scope, $timeo
 
     $scope.menu = [
         {
-            link : '#/livro',
-            title: 'Livro',
-            icon: 'dashboard'
-        },
-        {
             link : '#/autor',
             title: 'Autores',
             icon: 'assignment_ind'
@@ -27,19 +22,22 @@ angular.module('biblioteca_client').controller('home2', function ($scope, $timeo
             icon: 'group'
         },
         {
+            link : '#/livro',
+            title: 'Livro',
+            icon: 'dashboard'
+        }
+    ];
+    $scope.movimentacao = [        
+        {
             link : '#/requisicao',
             title: 'Requisição',
             icon: 'list'
         }
-        ];
-    $scope.admin = [
+    ];    
+    
+    $scope.admin = [        
         {
-            link : '',
-            title: 'Trash',
-            icon: 'delete'
-        },
-        {
-            link : 'showListBottomSheet($event)',
+            link : '/',
             title: 'Configurações',
             icon: 'settings'
         }

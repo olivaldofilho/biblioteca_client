@@ -30804,7 +30804,10 @@ function MdContactChips($mdTheming, $mdUtil) {
     // Responds to external changes to the model value.
     self.ngModelCtrl.$formatters.push(function(value) {
       if (value && !(value instanceof Date)) {
-        throw Error('The ng-model for md-datepicker must be a Date instance. ' +
+        if (typeof value === "string")
+      		value = new Date(value);
+        if (Object.prototype.toString.call(value) !== "[object Date]")  
+          throw Error('The ng-model for md-datepicker must be a Date instance. ' +
             'Currently the model is a: ' + (typeof value));
       }
 

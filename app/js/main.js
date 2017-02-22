@@ -1,4 +1,4 @@
-angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngMdIcons', 'ngCookies', 'meusComponentes'])
+angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngMdIcons', 'ngCookies', 'uppercase', 'angularUtils.directives.dirPagination'])
     .config(function($routeProvider, $locationProvider, $mdDateLocaleProvider){    
     $routeProvider
         .when('/autor/:id?', {
@@ -32,10 +32,14 @@ angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngM
         .when('/login2', {
             templateUrl: 'partials/login2.html'
         })
-        .when('/requisicao', {
+        .when('/requisicao/:id?', {
             templateUrl: 'partials/requisicao.html',
             controller: 'requisicao'
-        })         
+        })
+        .when('/requisicoes', {
+            templateUrl: 'partials/requisicoes.html',
+            controller: 'requisicoes'
+        })            
         .otherwise({redirectTo: '/home'});
 
     /*$routeProvider.when('/login', {

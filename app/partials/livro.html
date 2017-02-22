@@ -17,31 +17,31 @@
                             <label>Id</label>
                             <input ng-model="livro.id" type="text" disabled="">
                         </md-input-container>
-                        <md-input-container style="width:225"> 
+                        <md-input-container style="width:100"> 
                             <label>ISBN</label>
-                            <input ng-model="livro.isbn" type="text">
+                            <input ng-model="livro.isbn" type="text" uppercase>
                         </md-input-container>
-                         <md-input-container style="width:250">
+                         <md-input-container style="width:375">
                             <label>Localização</label>
-                            <input ng-model="livro.localizacao" type="text" style='text-transform:uppercase'>
+                            <input ng-model="livro.localizacao" type="text" uppercase>
                         </md-input-container>                         
                         <!--</div>-->
                     </md-content>
                     <md-content layout-gt-sm="row">
                         <md-input-container style="width:525">
                             <label>Título</label>
-                            <input ng-model="livro.titulo" type="text" style='text-transform:uppercase'>
+                            <input ng-model="livro.titulo" type="text" uppercase>
                         </md-input-container>
                     </md-content>
                     <md-content layout-gt-sm="row">                        
                         <md-input-container style="width:525">
                             <label>Descrição</label>
-                            <input ng-model="livro.descricao" type="text" style='text-transform:uppercase'>
+                            <input ng-model="livro.descricao" type="text" uppercase>
                         </md-input-container>
                     </md-content>
                     <md-content layout-gt-sm="row">                             
                         <md-input-container style="width:525">
-                            <label>Autor</label>
+                            <label>Autor Principal</label>
                             <md-select ng-model="livro.idautor">
                                 <md-option><em>None</em></md-option>
                                     <md-option ng-repeat="autor in autores" ng-value="autor.id">
@@ -54,6 +54,9 @@
             </div>
         </md-card-content>
         <md-card-actions>
+            <md-button class="md-icon-button" aria-label="Novo">                
+                <md-icon md-svg-icon="img/icons/ic_search_black_18px.svg"></md-icon>
+            </md-button>
             <a style="padding: 2px; width: 70px" ng-href="#/livro" class="btn btn-primary">Novo</a>
             <button style="padding: 2px; width: 70px" type="button" ng-click="salva()" class="btn btn-primary">Salvar</button>
             <a style="padding: 2px; width: 70px" ng-href="#/livros" class="btn btn-primary">Pesquisar</a>

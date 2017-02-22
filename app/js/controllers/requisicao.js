@@ -1,13 +1,45 @@
 angular.module('biblioteca_client')
-    .controller('requisicao', function($scope, $mdDialog, $mdDateLocale){
+    .controller('requisicao', function(Requisicao, $scope, $routeParams, $mdDialog, $mdDateLocale){
     var vm = this;
     vm.ok = ok;
-    $scope.clienteNome = '';
-    $scope.clienteId = '';
-    $scope.livroDescricao = '';
-    $scope.livroId = '';
+    //$scope.requisicao.nome_cliente = '';
+    //$scope.requisicao.id_cliente = '';
+    //$scope.requisicao.titulo_livro = '';
+    //$scope.requisicao.id_livro = '';
 
     $scope.color = '';
+
+    $scope.mensagem = {texto: ''};
+    $scope.mensagemErro = {
+        texto: '',
+        status: ''                     
+    };
+    $scope.requisicao = new Requisicao();                          
+    
+    $scope.novo = function(){
+        redirectTo: '/requisicao';
+        $scope.mensagem = {texto: ''};
+        $scope.requisicao = new Requisicao();
+    }
+
+    $scope.salva = function(){
+        console.log($scope.requisicao);
+        $scope.requisicao.$save()        
+            .then(function(requisicao){
+                $scope.mensagem = {texto: 'Requisicao cadastrada com sucesso! '};
+			    $scope.requisicao = requisicao;        
+            })
+            .catch(function(erro){
+                console.log(erro.status);
+                $scope.mensagemErro = {texto: 'Erro ao gravar requisicao. ',
+                                   status: erro};
+                $scope.requisicao = new requisicao();                 
+             });
+    }; 
+
+    $scope.formatDate = function(date) {
+         return moment(date).format('DD-MM-YYYY');
+    }; 
 
     // $mdDateLocaleProvider.formatDate = function(date) {
     //     return moment(date).format('DD-MM-YYYY');
@@ -21,17 +53,17 @@ angular.module('biblioteca_client')
 
 
     $scope.calculaDataDevolucao = function(){        
-       $scope.requisicao.dataDevolucao = '20/03/2017'; 
+       $scope.requisicao.data_devolucao = '20/03/2017'; 
     }
 
     $scope.dateChanged = function () {        
         // Do something with scope.selectedDate
-        var dataDevolucao = new Date($scope.requisicao.dataRetirada);
+        var dataDevolucao = new Date($scope.requisicao.data_retirada);
         dataDevolucao.setDate(dataDevolucao.getDate() + 30);
         var date = moment()
             .add(2,'d') //replace 2 with number of days you want to add
             .toDate();
-        $scope.requisicao.dataDevolucao = dataDevolucao;
+        $scope.requisicao.data_devolucao = dataDevolucao;
     };
     
     $scope.myDate = new Date('2015-10-15');
@@ -44,12 +76,12 @@ angular.module('biblioteca_client')
             templateUrl: "partials/clientespesquisa.html"
         })
         .then(function(cliente) {            
-            $scope.clienteId = cliente.id;
-            $scope.clienteNome = cliente.nome;         
+            $scope.requisicao.id_cliente = cliente.id;
+            $scope.requisicao.nome_cliente = cliente.nome;         
         }, function() {
-            $scope.clienteNome = 'You cancelled the dialog.';
+            $scope.requisicao.nome_cliente = 'You cancelled the dialog.';
         });
-        console.log($scope.clienteNome);
+        console.log($scope.requisicao.nome_cliente);
     };
 
     $scope.showAddLivro = function(ev) {
@@ -60,12 +92,12 @@ angular.module('biblioteca_client')
             templateUrl: "partials/livrospesquisa.html"
         })
         .then(function(livro) {            
-            $scope.livroId = livro.id;
-            $scope.livroDescricao = livro.descricao;         
+            $scope.requisicao.id_livro = livro.id;
+            $scope.requisicao.titulo_livro = livro.titulo;         
         }, function() {
-            $scope.livroDescricao = 'You cancelled the dialog.';
+            $scope.requisicao.titulo_livro = 'You cancelled the dialog.';
         });
-        console.log($scope.livroDescricao);
+        console.log($scope.requisicao.titulo_livro);
     };
 
     function ok() {
@@ -73,4 +105,22 @@ angular.module('biblioteca_client')
         // no specific instance reference is needed.
             $mdDialog.hide();
     }
+
+    var id = $routeParams.id;
+    if (id){        
+        Requisicao.get({id}, function(requisicao) {
+            //requisicao.data_retirada = (Date.parse(requisicao.data_retirada), 'dd-MM-yyyy');
+            //requisicao.data_devolucao =(Date.parse(requisicao.data_devolucao), 'dd-MM-yyyy');
+            console.log(requisicao);
+            $scope.mensagem = {texto: 'Requisição encontrado! ' + id};            
+			$scope.requisicao = requisicao;
+		}, 
+		function(erro) {		    
+			$scope.mensagem = {texto: 'Requisição não existe. Novo contato. '};
+            $scope.requisicao = new Requisicao();
+		});    
+    } else {
+        //$scope.mensagem = {texto: 'Contato não existe. Novo contato. '};
+        $scope.requisicao = new Requisicao();        
+    };
 });

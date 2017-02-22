@@ -5,7 +5,7 @@ angular.module('biblioteca_client')
     $scope.filtro = '';
     $scope.mensagem = {texto: ''};
 
-    $scope.closeDialog = function(cliente) {        
+    $scope.closeDialog = function(cliente) {      
         $mdDialog.hide(cliente);
     };
 
