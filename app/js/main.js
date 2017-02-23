@@ -39,7 +39,15 @@ angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngM
         .when('/requisicoes', {
             templateUrl: 'partials/requisicoes.html',
             controller: 'requisicoes'
-        })            
+        })
+        .when('/genero/:id?', {
+            templateUrl: 'partials/genero.html',
+            controller: 'genero'
+        })
+        .when('/generos', {
+            templateUrl: 'partials/generos.html',
+            controller: 'generos'
+        })        
         .otherwise({redirectTo: '/home'});
 
     /*$routeProvider.when('/login', {

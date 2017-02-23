@@ -1,5 +1,5 @@
 angular.module('biblioteca_client')
-    .controller('livro', function(Livro, Autor, $scope, $resource, $routeParams, $cookies){
+    .controller('livro', function(Livro, Autor, Genero, $scope, $resource, $routeParams, $cookies){
     //var Livro = $resource('http://localhost:10000/api/livro/:idLivro');
     //var LivroSalva = $resource('http://localhost:10000/api/livro/');
     
@@ -14,7 +14,7 @@ angular.module('biblioteca_client')
         redirectTo: '/livro';
         $scope.mensagem = {texto: ''};
         $scope.livro = new Livro();
-    }
+    };
 
     $scope.delete = function(){
         var id = $scope.livro.id;
@@ -30,7 +30,7 @@ angular.module('biblioteca_client')
 			$scope.mensagemErro = {texto: 'Erro ao excluir livro. ',
                                    status: erro};            
 		});        
-    }
+    };
 
     $scope.salva = function(){
         console.log($scope.livro);
@@ -61,8 +61,7 @@ angular.module('biblioteca_client')
         $scope.livro = new Livro();        
     };
 
-    function getAutores(){
-        //debugger;
+    function getAutores(){        
         Autor.query(
             function(autores) { 
                 $scope.autores = autores;                                
@@ -70,38 +69,17 @@ angular.module('biblioteca_client')
             function(erro) {
                 $scope.mensagem = {texto: 'Não foi possível obter a lista de autores ' + erro};                
             });
-    
-        /*livro.query(function(livros){
-            $scope.livros = livros;
-            
-            console.log($scope.livros);
-        });*/
-    }
+    };
+
+    function getGeneros(){        
+        Genero.query(
+            function(generos) { 
+                $scope.generos = generos;                                
+            }, 
+            function(erro) {
+                $scope.mensagem = {texto: 'Não foi possível obter a lista de generos ' + erro};
+            });
+    };
+    getGeneros();
     getAutores();
 });
-
-
-//LivroSalva.save($scope.livro)        
-        //LivroSalva.save({$scope.contato});        
-        /*LivroSalva.save($scope.livro, function(livro){            
-            $scope.mensagem = {texto: 'Contrato encontrado! ' + idLivro};
-			$scope.livro = livro;
-            //console.log(res.statusCode);
-            },
-            function(erro){
-                console.log(erro);
-			    $scope.mensagem = {texto: 'Erro ao gravar contato. ' + erro};
-                $scope.livro = new Livro();
-            }
-        );
-
-        /*$scope.contato.$save()
-            .then(function(){
-                $scope.mensagem = {texto: 'Salvo com sucesso'};
-                $scope.contato = new Contato();
-             })
-             .catch(function(erro){
-                 $scope.mensagem = {texto: 'Não foi possível salvar'};
-             });
-        };         
-           */

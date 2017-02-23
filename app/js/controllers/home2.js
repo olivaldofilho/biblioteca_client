@@ -22,6 +22,11 @@ angular.module('biblioteca_client').controller('home2', function ($scope, $timeo
             icon: 'group'
         },
         {
+            link : '#/genero',
+            title: 'Genero',
+            icon: 'bookmark'
+        },
+        {
             link : '#/livro',
             title: 'Livro',
             icon: 'dashboard'

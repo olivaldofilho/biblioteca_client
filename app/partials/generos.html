@@ -4,7 +4,7 @@
     <md-card flex flex-gt-xs="100">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">Pesquisa de Livros</span> 
+                <span class="md-headline">Pesquisa de Generos</span> 
             </md-card-title-text>            
         </md-card-title>
         <md-card-content>
@@ -21,23 +21,15 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>ISBN</th>
-                            <th>TITULO</th>
-                            <th>DESCRIÇÃO</th>
-                            <th>LOCALIZAÇÃO</th>                            
-                            <th>GENERO</th>
+                            <th>DESCRIÇÃO</th>                            
                         </tr>
                     </thead>
                     <tbody>
-                        <tr dir-paginate = "livro in livros | filter:filtro | itemsPerPage:5">
-                            <td>{{livro.id}}</td>                            
-                            <td>{{livro.isbn}}</td>
-                            <td>{{livro.titulo}}</td>
-                            <td>{{livro.descricao}}</td>
-                            <td>{{livro.localizacao}}</td>
-                            <td>{{livro.descricao_genero}}</td>
+                        <tr dir-paginate = "genero in generos | filter:filtro | itemsPerPage:5">
+                            <td>{{genero.id}}</td>
+                            <td>{{genero.descricao}}</td>                            
                             <td>
-                                <md-icon md-svg-icon="img/icons/ic_edit_black_18px.svg" ng-click="editar(livro.id)" href="#/livro/{{livro.id}}"></md-icon>                                            
+                                <md-icon md-svg-icon="img/icons/ic_edit_black_18px.svg" ng-click="editar(genero.id)" href="#/genero/{{genero.id}}"></md-icon>                             
                             </td>          
                         </tr>
                     </tbody>                                
@@ -46,11 +38,11 @@
         </md-content>
         <dir-pagination-controls max-size="10" boundary-links="true"></dir-pagination-controls>
         <md-card-actions>
-            <a style="padding: 5px; width: 100px" ng-href="#/livro" class="btn btn-primary">Novo</a>
+            <a style="padding: 5px; width: 100px" ng-href="#/genero" class="btn btn-primary">Novo</a>
         </md-card-actions>
         <md-card-footer>
-            <p class="text-info" ng-hide="livros.length">Não há requisições cadastradas</p>
-            <p ng-show="livros.length">Contatos cadastrados: {{livros.length}}</p>
+            <p class="text-info" ng-hide="generos.length">Não há generos cadastradas</p>
+            <p ng-show="livros.length">Contatos cadastrados: {{generos.length}}</p>
             <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
         </md-card-footer>         
     </md-card>    

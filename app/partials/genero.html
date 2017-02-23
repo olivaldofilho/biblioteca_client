@@ -1,0 +1,32 @@
+<!-- app/partials/genero.html -->
+<md-content layout-align="center center" layout-gt-sm="row" layout-padding="">     
+    <md-card flex flex-gt-xs="50">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Cadastro de Generos</span>                 
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>      
+            <div layout="row">      
+                <md-input-container flex="20">
+                    <label>Id</label>
+                    <input ng-model="genero.id" type="text" disabled="">
+                </md-input-container>                    
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Nome</label>
+                    <input ng-model="genero.descricao" type="text" uppercase>
+                </md-input-container>                        
+            </div>
+        </md-card-content>
+        <md-card-action>            
+            <md-button class="md-raised" ng-click="novo()">Novo</md-button>
+            <md-button class="md-raised" ng-click="salva()">Salvar</md-button>                        
+            <md-button style="width: 50px" class="md-raised" ng-href="#/generos">Pesquisar</md-button>
+            <md-button style="width: 50px" class="md-raised" ng-click="delete()">Excluir</md-button>
+        </md-card-action>
+        <md-card-footer>
+            <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+            <p ng-show="mensagemErro.texto">{{mensagemErro.texto}} + {{mensagemErro.status}}</p>
+        </md-card-footer>
+    </md-card>    
+</md-content>

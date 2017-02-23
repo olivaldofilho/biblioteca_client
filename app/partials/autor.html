@@ -1,35 +1,43 @@
 <!-- app/partials/autor.html -->
-<md-content layout-align="center" layout-gt-sm="row" layout-padding="">
-    <md-card>
+<md-content layout-align="center center" layout-gt-sm="row" layout-padding="">     
+    <md-card flex flex-gt-xs="50">
         <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">Cadastro de Autores</span> 
-            <span class="md-subhead">Dados do Autor</span>       
-        </md-card-title-text>
+            <md-card-title-text>
+                <span class="md-headline">Cadastro de Autores</span>                 
+            </md-card-title-text>
         </md-card-title>
-        <md-card-content style="width:600px">
-            <div>
-                <form name=autorForm>
-                    <md-content layout-gt-sm="row">      
-                        <md-input-container style="width:50">
+        <md-card-content>      
+            <div layout="row">      
+            <!--<form name=autorForm>-->
+                    <!--<div layout-gt-sm="row" layout-padding>-->
+                    <!--<md-content layout-gt-sm="row">      -->
+                        <md-input-container flex="20">
                             <label>Id</label>
                             <input ng-model="autor.id" type="text" disabled="">
                         </md-input-container>                    
-                        <md-input-container style="width:475">
+                        <md-input-container class="md-block" flex-gt-sm>
                             <label>Nome</label>
                             <input ng-model="autor.nome" type="text" uppercase>
-                        </md-input-container>                        
-                    </md-content>                    
-                </form>
+                        </md-input-container>
+                        <!--</div>                        -->
+                    <!--</md-content>                    -->
+                <!--</form>            -->
             </div>
         </md-card-content>
-        <md-content layout-padding="">
-            <a style="padding: 2px; width: 70px" ng-href="#/autor" class="btn btn-primary">Novo</a>
-            <button style="padding: 2px; width: 70px" type="button" ng-click="salva()" class="btn btn-primary">Salvar</button>
-            <a style="padding: 2px; width: 70px" ng-href="#/autores" class="btn btn-primary">Pesquisar</a>
-            <button style="padding: 2px; width: 70px" type="button" ng-click="delete()" class="btn btn-primary">Excluir</button>    
+        <md-card-action>            
+            <md-button class="md-raised" ng-click="novo()">Novo</md-button>
+            <md-button class="md-raised" ng-click="salva()">Salvar</md-button>                        
+            <md-button style="width: 50px" class="md-raised" ng-href="#/autores">Pesquisar</md-button>
+            <md-button style="width: 50px" class="md-raised" ng-click="delete()">Excluir</md-button>
+            
+            <!--<a style="padding: 2px; width: 70px" ng-href="#/autor" class="btn btn-primary">Novo</a>-->
+            <!--<md-button style="padding: 2px; width: 70px" type="button" ng-click="delete()" class="btn btn-primary">Excluir</md-button>                
+                <a style="padding: 2px; width: 70px" ng-href="#/autores" class="btn btn-primary">Pesquisar</a>-->
+
+        </md-card-action>
+        <md-card-footer>
             <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
             <p ng-show="mensagemErro.texto">{{mensagemErro.texto}} + {{mensagemErro.status}}</p>
-        </md-content>   
-    </md-card>
+        </md-card-footer>
+    </md-card>    
 </md-content>

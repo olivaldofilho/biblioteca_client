@@ -3,19 +3,24 @@ angular.module('biblioteca_client')
     //var Livro = $resource('http://localhost:10000/api/livro/:idLivro');
     //var LivroSalva = $resource('http://localhost:10000/api/livro/');
     
-    $scope.mensagem = {texto: ''};
-    $scope.mensagemErro = {
-        texto: '',
-        status: ''                     
-    };
-    $scope.autor = new Autor();                          
-    
-    $scope.novo = function(){
-        redirectTo: '/autor';
-        $scope.mensagem = {texto: ''};
-        $scope.autor = new Autor();
-    }
+                             
+    novo();
 
+    $scope.novo = function(){
+        novo();
+        window.location.href = "#/autor/";
+    };
+
+    function novo(){
+        $scope.mensagem = {texto: ''};
+        $scope.mensagemErro = {
+            texto: '',
+            status: ''
+        };                   
+        $scope.autor = new Autor();        
+    };
+
+    
     $scope.delete = function(){
         var id = $scope.autor.id;
         if (!id){
