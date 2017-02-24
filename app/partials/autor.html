@@ -24,20 +24,33 @@
                 <!--</form>            -->
             </div>
         </md-card-content>
-        <md-card-action>            
-            <md-button class="md-raised" ng-click="novo()">Novo</md-button>
-            <md-button class="md-raised" ng-click="salva()">Salvar</md-button>                        
-            <md-button style="width: 50px" class="md-raised" ng-href="#/autores">Pesquisar</md-button>
-            <md-button style="width: 50px" class="md-raised" ng-click="delete()">Excluir</md-button>
-            
-            <!--<a style="padding: 2px; width: 70px" ng-href="#/autor" class="btn btn-primary">Novo</a>-->
-            <!--<md-button style="padding: 2px; width: 70px" type="button" ng-click="delete()" class="btn btn-primary">Excluir</md-button>                
-                <a style="padding: 2px; width: 70px" ng-href="#/autores" class="btn btn-primary">Pesquisar</a>-->
-
+        <md-card-action layout="row" layout-align="end center">
+            <!--<md-icon md-svg-icon="img/icons/ic_edit_black_18px.svg"></md-icon> 
+            <md-icon md-svg-icon="img/icons/ic_add_circle_outline_black_24px.svg" ng-click="novo()"></md-icon>
+            <md-icon md-svg-icon="img/icons/ic_archive_black_24px.svg" ng-click="salva()"></md-icon>-->
+            <!--<md-icon md-svg-src="img/icons/ic_add_circle_outline_white_24px.svg"></md-icon>-->
+            <md-button class="md-icon-button md-primary" aria-label="Novo" ng-click="novo()">
+                <md-tooltip md-direction="bottom">Novo</md-tooltip>
+                <md-icon md-svg-icon="img/icons/ic_add_circle_outline_black_24px.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" ng-click="salva()" aria-label="Salvar">
+                <md-tooltip md-direction="bottom">Gravar</md-tooltip>
+                <md-icon md-svg-icon="img/icons/ic_archive_black_24px.svg"></md-icon>            
+            </md-button>
+            <md-button class="md-icon-button md-primary" ng-click="pesquisa()" aria-label="Pesquisar">
+                <md-tooltip md-direction="bottom">Pesquisar</md-tooltip>
+                <md-icon md-svg-icon="img/icons/ic_search_black_24px.svg"></md-icon>            
+            </md-button>
+            <md-button class="md-icon-button md-primary" ng-click="delete()" aria-label="Excluir">
+                <md-tooltip md-direction="bottom">Excluir</md-tooltip>
+                <md-icon md-svg-icon="img/icons/ic_delete_black_24px.svg"></md-icon>            
+            </md-button>
         </md-card-action>
-        <md-card-footer>
-            <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
-            <p ng-show="mensagemErro.texto">{{mensagemErro.texto}} + {{mensagemErro.status}}</p>
-        </md-card-footer>
-    </md-card>    
+        <md-card-action layout="row" layout-align="end left">
+            <p ng-show="mensagem.texto">{{mensagem.texto}} {{mensagem.status}}</p>
+        </md-card-action>
+        <!--<md-card-footer ng-if="mensagem.texto.length" layout="row" layout-align="end center">
+            <p ng-show="mensagem.texto">{{mensagem.texto}} + {{mensagem.status}}</p>
+        </md-card-footer>-->
+    </md-card>
 </md-content>
