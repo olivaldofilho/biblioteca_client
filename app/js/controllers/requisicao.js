@@ -2,24 +2,25 @@ angular.module('biblioteca_client')
     .controller('requisicao', function(Requisicao, $scope, $routeParams, $mdDialog, $mdDateLocale){
     var vm = this;
     //vm.ok = ok;
-
-    $scope.color = '';
-
-    $scope.mensagem = {texto: ''};
-    $scope.mensagemErro = {
-        texto: '',
-        status: ''                     
-    };
-    $scope.requisicao = new Requisicao();                          
+    novo();
     
     $scope.novo = function(){
-        redirectTo: '/requisicao';
-        $scope.mensagem = {texto: ''};
+        novo();
+        window.location.href = "#/requisicao/";
+        $scope.mensagem = {texto: ''};        
+    };
+
+    function novo(){
+        $scope.color = '';
+        $scope.mensagem = {texto: '', status: ''};
         $scope.requisicao = new Requisicao();
-    }
+    };
 
     $scope.salva = function(){
         console.log($scope.requisicao);
+        if (!$scope.requisicao.id){
+            $scope.requisicao.status = 1;
+        }
         $scope.requisicao.$save()        
             .then(function(requisicao){
                 $scope.mensagem = {texto: 'Requisicão cadastrada com sucesso! '};
@@ -27,8 +28,7 @@ angular.module('biblioteca_client')
             })
             .catch(function(erro){
                 console.log(erro.status);
-                $scope.mensagemErro = {texto: 'Erro ao gravar requisicao. ',
-                                   status: erro};
+                $scope.mensagemErro = {texto: 'Erro ao gravar requisicao. ', status: erro};
                 $scope.requisicao = new requisicao();                 
              });
     }; 
@@ -51,12 +51,13 @@ angular.module('biblioteca_client')
 
     $scope.dateChanged = function () {        
         // Do something with scope.selectedDate
+        debugger;
         var dataDevolucao = new Date($scope.requisicao.data_retirada);
-        dataDevolucao.setDate(dataDevolucao.getDate() + 30);
+        dataDevolucao.setDate(dataDevolucao.getDate() + 7);
         var date = moment()
             .add(2,'d') //replace 2 with number of days you want to add
             .toDate();
-        $scope.requisicao.data_devolucao = dataDevolucao;
+        $scope.requisicao.data_prevista_devolucao = dataDevolucao;
     };
     
     $scope.myDate = new Date('2015-10-15');

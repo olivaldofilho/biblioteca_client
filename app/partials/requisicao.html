@@ -8,13 +8,17 @@
         </md-card-title>
         <md-card-content>
             <div layout="row">
-                <md-input-container flex="50">
+                <md-input-container flex="33">
                     <label>Retirada</label>              
-                    <md-datepicker ng-change="dateChanged()" required ng-model="requisicao.data_retirada" , nx-model-formatter="['moment','toDate']"></md-datepicker>
+                    <md-datepicker ng-change="dateChanged()" required ng-model="requisicao.data_retirada"></md-datepicker>
                 </md-input-container>
-                <md-input-container  flex="50">
-                    <label>Devolução</label>
+                <md-input-container  flex="33">
+                    <label>Devolução Prev.</label>
                     <md-datepicker required ng-model="requisicao.data_prevista_devolucao"></md-datepicker>
+                </md-input-container>
+                <md-input-container  flex="33">
+                    <label>Devolução</label>
+                    <md-datepicker required ng-model="requisicao.data_devolucao" ng-disabled="true"></md-datepicker>
                 </md-input-container>
             </div>
             <md-content layout-padding>
