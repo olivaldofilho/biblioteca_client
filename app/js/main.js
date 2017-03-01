@@ -1,4 +1,4 @@
-angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngMdIcons', 'ngCookies', 'uppercase', 'angularUtils.directives.dirPagination'])
+angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'ngCookies', 'uppercase', 'validacao', 'validacaoCep', 'angularUtils.directives.dirPagination'])
     .config(function($routeProvider, $locationProvider, $mdDateLocaleProvider){    
     $routeProvider
         .when('/autor/:id?', {

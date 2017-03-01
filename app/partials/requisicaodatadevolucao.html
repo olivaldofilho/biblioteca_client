@@ -1,0 +1,28 @@
+<md-dialog layout-gt-sm="row" layout-padding>
+    <md-card flex flex-gt-xs="100">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Devolução de Livro</span>                 
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <div layout="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Devolução</label>              
+                    <md-datepicker ng-change="dateChanged()" required ng-model="requisicao.data_devolucao" , nx-model-formatter="['moment','toDate']"></md-datepicker>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Observação</label>
+                    <textarea ng-model="requisicao.obs_devolucao" rows="5" uppercase></textarea>
+                </md-input-container>            
+            </div>
+        </md-card-content>
+        <md-card-actions>
+            <span flex></span> 
+            <md-button ng-click="cancel()" class="md-primary">Sair</md-button>
+            <md-button ng-click="closeDialog(requisicao)" class="md-primary">Ok</md-button>
+        </md-card-actions>
+    </md-card>    
+</md-dialog>

@@ -3,30 +3,46 @@
     <md-card flex flex-gt-xs="50">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">Cadastro de Generos</span>                 
+                <span class="md-headline">Cadastro de Gênero</span>                 
             </md-card-title-text>
         </md-card-title>
-        <md-card-content>      
-            <div layout="row">      
-                <md-input-container flex="20">
-                    <label>Id</label>
-                    <input ng-model="genero.id" type="text" disabled="">
-                </md-input-container>                    
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Nome</label>
-                    <input ng-model="genero.descricao" type="text" uppercase>
-                </md-input-container>                        
-            </div>
+        <md-card-content layout-padding>
+            <form name=generoForm>    
+                <div layout="row">            
+                    <md-input-container flex="20">
+                        <label>Id</label>
+                        <input ng-model="genero.id" type="text" disabled="">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Descrição</label>
+                        <input required name="descricao" ng-model="genero.descricao" type="text" uppercase>
+                        <div ng-messages="generoForm.descricao.$error" ng-if="generoForm.descricao.$invalid && generoForm.descricao.$touched">
+                            <div ng-message="required">Este campo é obrigatório.</div>
+                        </div>
+                    </md-input-container>                        
+                </div>
+            </form>        
         </md-card-content>
-        <md-card-action>            
-            <md-button class="md-raised" ng-click="novo()">Novo</md-button>
-            <md-button class="md-raised" ng-click="salva()">Salvar</md-button>                        
-            <md-button style="width: 50px" class="md-raised" ng-href="#/generos">Pesquisar</md-button>
-            <md-button style="width: 50px" class="md-raised" ng-click="delete()">Excluir</md-button>
+        <md-card-action layout="row" layout-align="end center">            
+            <md-button class="md-icon-button md-primary" aria-label="Novo" ng-click="novo()">
+                <md-tooltip md-direction="bottom">Novo</md-tooltip>
+                <md-icon md-svg-icon="img/icons/ic_add_circle_outline_black_24px.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" ng-click="salva()" aria-label="Salvar">
+                <md-tooltip md-direction="bottom">Gravar</md-tooltip>
+                <md-icon md-svg-icon="img/icons/ic_archive_black_24px.svg"></md-icon>            
+            </md-button>
+            <md-button class="md-icon-button md-primary" ng-click="pesquisa()" aria-label="Pesquisar">
+                <md-tooltip md-direction="bottom">Pesquisar</md-tooltip>
+                <md-icon md-svg-icon="img/icons/ic_search_black_24px.svg"></md-icon>            
+            </md-button>
+            <md-button class="md-icon-button md-primary" ng-click="delete()" aria-label="Excluir">
+                <md-tooltip md-direction="bottom">Excluir</md-tooltip>
+                <md-icon md-svg-icon="img/icons/ic_delete_black_24px.svg"></md-icon>            
+            </md-button>
         </md-card-action>
-        <md-card-footer>
-            <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
-            <p ng-show="mensagemErro.texto">{{mensagemErro.texto}} + {{mensagemErro.status}}</p>
+        <md-card-footer ng-if="mensagem.texto.length" layout="row" layout-align="end center">
+            <p ng-show="mensagem.texto">{{mensagem.texto}} {{mensagem.status}}</p>
         </md-card-footer>
-    </md-card>    
+    </md-card>
 </md-content>

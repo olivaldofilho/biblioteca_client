@@ -1,47 +1,54 @@
 <!-- app/partials/livros.html -->
-<div layout-align="center" class="col-md-8 col-md-offset-3">
-    <md-card>
+<!--<div layout-align="center" class="col-md-8 col-md-offset-3">-->
+<md-content layout-align="center center" layout-gt-sm="row" layout-padding="">    
+    <md-card flex flex-gt-xs="100">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">Pesquisa de Autores</span> 
-                <!--<span class="md-subhead">Grid</span>       -->
-            </md-card-title-text>
+                <span class="md-headline">Pesquisa de Autores</span>
+            </md-card-title-text>            
         </md-card-title>
-        <md-card-content> 
-            <div>
-                <form>
-                    <a style="padding: 5px; width: 100px" ng-href="#/autor" class="btn btn-primary">Novo</a>
-
-                    <input ng-model="filtro" type="search" placeholder="parte do nome">
-
-                    <p ng-show="autores.length">Contatos cadastrados: {{autores.length}}</p>
-
-                    <p class="text-info" ng-hide="autores.length">Não há autores cadastrados</p>
-                    <!--<md-content layout-padding="">    -->
-                        <div class="table-responsive">
-                            <table style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>            
-                                        <th>Nome</th>            
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="autor in autores | filter:filtro">
-                                        <td>{{autor.id}}</td>                                        
-                                        <td>
-                                            <a ng-href="#/autor/{{autor.id}}">{{autor.nome}}</a>
-                                        </td>                                       
-                                    </tr>
-                                </tbody>
-                            </table>         
-                        </div>
-                    <!--</md-content> -->
-                </form>
+        <md-card-content>
+            <div layout="row"> 
+                <md-input-container class="md-block" flex-gt-xs="">
+                    <label>Filtro</label>
+                    <input ng-model="filtro" uppercase type="search" placeholder="parte do nome">
+                </md-input-container> 
             </div>
-         </md-card-content>
-         <div>
-             <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
-         </div>    
-    </md-card>
-</div>
+        </md-card-content>                
+        <md-content layout-padding>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOME</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate = "autor in autores | filter:filtro | itemsPerPage:5">
+                            <td>{{autor.id}}</td>                            
+                            <td>{{autor.nome}}</td>
+                            <td layout-align="left">
+                                <md-icon md-svg-icon="img/icons/ic_edit_black_18px.svg" ng-click="editar(autor.id)" href="#/autor/{{autor.id}}"></md-icon>
+                            </td>          
+                        </tr>
+                    </tbody>                                
+                </table>                                    
+            </div>
+        </md-content>
+        <dir-pagination-controls max-size="10" boundary-links="true"></dir-pagination-controls>
+        <md-card-action layout="row" layout-align="end center">
+            <md-button class="md-icon-button md-primary" aria-label="Novo" ng-click="novo()">
+                <md-tooltip md-direction="bottom">Novo</md-tooltip>
+                <md-icon md-svg-icon="img/icons/ic_add_circle_outline_black_24px.svg"></md-icon>
+            </md-button>            
+        </md-card-action>
+        <md-card-action layout="row" layout-align="end left">
+            <p class="text-info" ng-hide="autores.length">Não há autores cadastrados</p>
+            <p ng-show="autores.length">Autores cadastrados: {{autores.length}}</p>
+        </md-card-action>
+        <md-card-footer ng-if="mensagem.texto.length" layout="row" layout-align="end center">            
+            <p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+        </md-card-footer>         
+    </md-card>    
+</md-content>

@@ -6,12 +6,21 @@ angular.module('biblioteca_client')
     novo();
 
     $scope.novo = function(){
-        novo();
+        novo();        
+        $scope.autorForm.$setPristine(true);
+        $scope.autorForm.$setUntouched();
+        $scope.autorForm.$setError = {};
+        // reset all errors
+        for (var att in  $scope.autorForm.$error) {
+            if ($scope.autorForm.$error.hasOwnProperty(att)) {
+                $scope.autorForm.$setValidity(att, true);
+            };
+        };        
         window.location.href = "#/autor/";
     };
 
-    function novo(){
-        $scope.mensagem = {texto: '', status: ''};                         
+    function novo(){        
+        $scope.mensagem = {texto: '', status: ''};
         $scope.autor = new Autor();
     };
     
@@ -27,10 +36,32 @@ angular.module('biblioteca_client')
 		}, 
 		function(erro) {		    
 			$scope.mensagem = {texto: 'Erro ao excluir autor. ', status: erro};
-		});        
+		});    
     };
 
     $scope.salva = function(){
+       //dirty || prestine
+       //touched || $setUntouched
+       //invalid || valid
+
+        // for (control of $scope.autorForm.$$controls) {
+        //     control.$setDirty();
+        //     control.$validate();
+        // }; 
+
+         angular.forEach($scope.autorForm.$error, function(error) {
+             angular.forEach(error, function(field) {
+             field.$setTouched();
+             });
+         });
+
+        debugger;
+        console.log($scope.autorForm);
+        $scope.autorForm.$setDirty();
+        if ($scope.autorForm.$invalid){
+            return;
+        }
+
         console.log($scope.autor);
         $scope.autor.$save()        
             .then(function(autor){
@@ -55,7 +86,7 @@ angular.module('biblioteca_client')
 			$scope.autor = autor;
 		}, 
 		function(erro) {		    
-			$scope.mensagem = {texto: 'Autor não existe. Novo contato. ', status: ''};
+			$scope.mensagem = {texto: 'Autor não existe. Novo contato. ', status: erro};
             $scope.autor = new Autor();
 		});    
     } else {

@@ -1,11 +1,7 @@
 angular.module('biblioteca_client')
     .controller('requisicao', function(Requisicao, $scope, $routeParams, $mdDialog, $mdDateLocale){
     var vm = this;
-    vm.ok = ok;
-    //$scope.requisicao.nome_cliente = '';
-    //$scope.requisicao.id_cliente = '';
-    //$scope.requisicao.titulo_livro = '';
-    //$scope.requisicao.id_livro = '';
+    //vm.ok = ok;
 
     $scope.color = '';
 
@@ -26,7 +22,7 @@ angular.module('biblioteca_client')
         console.log($scope.requisicao);
         $scope.requisicao.$save()        
             .then(function(requisicao){
-                $scope.mensagem = {texto: 'Requisicao cadastrada com sucesso! '};
+                $scope.mensagem = {texto: 'Requisicão cadastrada com sucesso! '};
 			    $scope.requisicao = requisicao;        
             })
             .catch(function(erro){
@@ -37,20 +33,17 @@ angular.module('biblioteca_client')
              });
     }; 
 
+    $scope.pesquisa = function(){
+        window.location.href = "#/requisicoes/";       
+    }
+
     $scope.formatDate = function(date) {
          return moment(date).format('DD-MM-YYYY');
     }; 
 
-    // $mdDateLocaleProvider.formatDate = function(date) {
-    //     return moment(date).format('DD-MM-YYYY');
-    // };
-
-    //$mdDateLocaleProvider.months = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-
     $mdDateLocale.formatDate = function(date) {
         return date ? moment(date).format('DD/MM/YYYY') : '';
     };
-
 
     $scope.calculaDataDevolucao = function(){        
        $scope.requisicao.data_devolucao = '20/03/2017'; 
@@ -100,11 +93,11 @@ angular.module('biblioteca_client')
         console.log($scope.requisicao.titulo_livro);
     };
 
-    function ok() {
-        // Easily hides most recent dialog shown...
-        // no specific instance reference is needed.
-            $mdDialog.hide();
-    }
+    // function ok() {
+    //     // Easily hides most recent dialog shown...
+    //     // no specific instance reference is needed.
+    //         $mdDialog.hide();
+    // }
 
     var id = $routeParams.id;
     if (id){        
