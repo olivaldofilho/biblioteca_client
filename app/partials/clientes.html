@@ -1,7 +1,7 @@
 <!-- app/partials/livros.html -->
 <!--<div layout-align="center" class="col-md-8 col-md-offset-3">-->
-<md-content layout-align="center center" layout-gt-sm="row" layout-padding="">    
-    <md-card flex flex-gt-xs="100">
+<md-content layout-align="top center" layout-gt-sm="row" layout-padding="">    
+    <md-card flex>
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">Pesquisa de Clientes</span>
@@ -9,13 +9,11 @@
         </md-card-title>
         <md-card-content>
             <div layout="row"> 
-                <md-input-container class="md-block" flex-gt-xs="">
+                <md-input-container class="md-block" flex-gt-xs="" flex="100">
                     <label>Filtro</label>
                     <input ng-model="filtro" uppercase type="search" placeholder="parte do nome">
                 </md-input-container> 
-            </div>
-        </md-card-content>                
-        <md-content layout-padding>
+            </div>        
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -25,6 +23,7 @@
                             <th>TELEFONE1</th>
                             <th>TELEFONE2</th>
                             <th>TELEFONE3</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,14 +33,14 @@
                             <td>{{cliente.telefone1}}</td>
                             <td>{{cliente.telefone2}}</td>
                             <td>{{cliente.telefone3}}</td>                            
-                            <td layout-align="left">
+                            <td layout-align="rigth">
                                 <md-icon md-svg-icon="img/icons/ic_edit_black_18px.svg" ng-click="editar(cliente.id)" href="#/cliente/{{cliente.id}}"></md-icon>
                             </td>          
                         </tr>
                     </tbody>                                
                 </table>                                    
             </div>
-        </md-content>
+        </md-card-content>
         <dir-pagination-controls max-size="10" boundary-links="true"></dir-pagination-controls>
         <md-card-action layout="row" layout-align="end center">
             <md-button class="md-icon-button md-primary" aria-label="Novo" ng-click="novo()">

@@ -1,5 +1,6 @@
-<md-content layout-align="center center" layout-gt-sm="row" layout-padding="">
-    <md-card flex flex-gt-xs="50">
+<md-content layout-xs="column" layout="row" layout-align="center" layout-padding>
+<!--<div layout="row" layout-xs="column" layout-align="center" layout-padding>   -->
+    <md-card>
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">Requisição de Livro</span>
@@ -7,36 +8,34 @@
             </md-card-title-text>
         </md-card-title>
         <md-card-content>
-            <div layout="row">
-                <md-input-container flex="33">
+            <div layout="row" layout-xs="column">
+                <md-input-container class="md-block">
                     <label>Retirada</label>              
                     <md-datepicker ng-change="dateChanged()" required ng-model="requisicao.data_retirada"></md-datepicker>
                 </md-input-container>
-                <md-input-container  flex="33">
-                    <label>Devolução Prev.</label>
+                <md-input-container>
+                    <label>Previsão Dev.</label>
                     <md-datepicker required ng-model="requisicao.data_prevista_devolucao"></md-datepicker>
                 </md-input-container>
-                <md-input-container  flex="33">
+                <md-input-container>
                     <label>Devolução</label>
                     <md-datepicker required ng-model="requisicao.data_devolucao" ng-disabled="true"></md-datepicker>
                 </md-input-container>
+            </div>            
+            <div>
+                <md-input-container class="md-block">
+                    <label>Cliente</label>  
+                    <md-icon md-svg-icon="img/icons/ic_people_black_24px.svg" ng-click="showAddCliente($event)"></md-icon>                            
+                    <input aria-label ="nome_cliente" ng-model="requisicao.nome_cliente" type="text" disabled>
+                </md-input-container>
             </div>
-            <md-content layout-padding>
-                <div layout="row">
-                    <md-input-container flex="100">
-                        <label>Cliente</label>  
-                        <md-icon md-svg-icon="img/icons/ic_people_black_24px.svg" ng-click="showAddCliente($event)"></md-icon>                            
-                        <input aria-label ="nome_cliente" ng-model="requisicao.nome_cliente" type="text" disabled>
-                    </md-input-container>
-                </div>
-                <div layout-gt-xs="row">                   
-                    <md-input-container class="md-block" flex-gt-xs>
-                        <label>Livro</label>                        
-                        <md-icon md-svg-icon="img/icons/ic_library_books_black_24px.svg" ng-click="showAddLivro($event)"></md-icon>                            
-                        <input aria-label ="titulo_livro" ng-model="requisicao.titulo_livro" type="text" disabled>                        
-                    </md-input-container>                    
-                </div>        
-            </md-content>
+            <div>                   
+                <md-input-container class="md-block">
+                    <label>Livro</label>                        
+                    <md-icon md-svg-icon="img/icons/ic_library_books_black_24px.svg" ng-click="showAddLivro($event)"></md-icon>                            
+                    <input aria-label ="titulo_livro" ng-model="requisicao.titulo_livro" type="text" disabled>                        
+                </md-input-container>                    
+            </div>
         </md-card-content>            
         <md-card-action layout="row" layout-align="end center">            
             <md-button class="md-icon-button md-primary" aria-label="Novo" ng-click="novo()">
@@ -60,4 +59,5 @@
             <p ng-show="mensagem.texto">{{mensagem.texto}} {{mensagem.status}}</p>
         </md-card-footer>
     </md-card>
+<!--</div>-->
 </md-content>

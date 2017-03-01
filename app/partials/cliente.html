@@ -1,7 +1,7 @@
 <!-- app/partials/autor.html -->
-<div class="md-inline-form">
+<!--<div class="md-inline-form">-->
 
-<md-content layout-align="center center"  layout="column" layout-padding="" flex md-scroll-y>     
+<md-content layout-align="center center"  layout="column" layout-padding="" md-scroll-y>     
     <md-card>
         <md-card-title>
             <md-card-title-text>
@@ -16,7 +16,7 @@
                         <label>Id</label>
                         <input ng-model="cliente.id" type="text" disabled="">
                     </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="80">
                         <label>Nome</label>
                         <input ng-model="cliente.nome" type="text" uppercase>
                     </md-input-container>                        
@@ -25,42 +25,42 @@
             <span class="md-subheadline">Endereço:</span>
             <form name=autorEnderecoForm>
                 <div layout="row">                   
-                    <md-input-container class="md-block" flex-gt-sm flex=66>
+                    <md-input-container class="md-block" flex-gt-sm flex="66">
                         <label>Logradouro</label>
-                        <input ng-model="cliente.logradouro" type="text" uppercase flex=33>
+                        <input ng-model="cliente.logradouro" type="text" uppercase>
                     </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="33">
                         <label>Número</label>
                         <input type="number" ng-model="cliente.numero" type="text">
                     </md-input-container>                       
                 </div>
                 <div layout="row">
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="50">
                         <label>Complemento</label>
                         <input ng-model="cliente.complemento" upper type="text">
                     </md-input-container> 
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="50">
                         <label>Bairro</label>
                         <input ng-model="cliente.bairro" upper type="text">
                     </md-input-container>
                 </div>
                 <div layout="row">
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="33">
                         <label>Cep</label>
                         <input ng-model="cliente.cep" cep-input type="text">
                     </md-input-container> 
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="66">
                         <label>Cidade</label>
                         <input ng-model="cliente.cidade" upper type="text">
                     </md-input-container>
                 </div>    
                 <span class="md-subheadline">Dados da Família:</span>
                 <div layout="row">
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="50">
                         <label>Pai</label>
                         <input ng-model="cliente.pai" type="text" uppercase>
                     </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="50">
                         <label>Mãe</label>
                         <input ng-model="cliente.mae" type="text" uppercase>
                     </md-input-container>
@@ -69,15 +69,15 @@
             <span class="md-subheadline">Telefones:</span>
             <form name=autorTelefoneForm>
                 <div layout="row">
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="33">
                         <label>Telefone1</label>
                         <input ng-model="cliente.telefone1" phone-input/>
                     </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="33">
                         <label>Telefone2</label>
                         <input ng-model="cliente.telefone2" phone-input/>
                     </md-input-container>
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex-gt-sm flex="33">
                         <label>Telefone3</label>
                         <input ng-model="cliente.telefone3" phone-input/>
                     </md-input-container>
@@ -107,4 +107,4 @@
         </md-card-footer>
     </md-card>
 </md-content>
-</div> 
+<!--</div> -->
