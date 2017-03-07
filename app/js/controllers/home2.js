@@ -1,4 +1,44 @@
-angular.module('biblioteca_client').controller('home2', function ($scope, $timeout, $mdSidenav, $log, $mdBottomSheet, $mdDialog) {
+angular.module('biblioteca_client')
+  .controller('home2', function ($scope, $timeout, $mdSidenav, $log, $mdBottomSheet, $mdDialog, $rootScope) {
+  
+  showLogin();
+
+  function showLogin(){
+    $mdDialog.show({
+            //targetEvent: ev,            
+            templateUrl: "partials/login.html",
+            controller: "login",
+            controllerAs: 'vm'
+        })
+        .then(function(login) {            
+            //$scope.requisicao.id_cliente = cliente.id;
+            //$scope.requisicao.nome_cliente = cliente.nome;         
+        }, function() {
+            //$scope.requisicao.nome_cliente = 'You cancelled the dialog.';
+        });
+  };
+
+    $scope.showLogin = function(ev) {
+        $mdDialog.show({
+            targetEvent: ev,
+            controller: "login",
+            controllerAs: 'vm',
+            templateUrl: "partials/login.html"
+        })
+        .then(function(cliente) {            
+            //$scope.requisicao.id_cliente = cliente.id;
+            //$scope.requisicao.nome_cliente = cliente.nome;         
+        }, function() {
+            //$scope.requisicao.nome_cliente = 'You cancelled the dialog.';
+        });
+        //console.log($scope.requisicao.nome_cliente);
+    };
+    
+    
+    $scope.heroImage = {
+        background: 'url(img/background/img.jpg)'
+    };
+    
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.toggleRight = buildToggler('right');
     

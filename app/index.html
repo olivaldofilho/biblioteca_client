@@ -68,6 +68,12 @@
             border-color: #F99;
         }
 
+        .hero {
+            width: 100%;
+            min-height: 350px;
+            background-position: center center;
+        } 
+
     </style>
     <head>
         <meta charset="utf-8">
@@ -81,9 +87,12 @@
         <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">        
         <link rel="stylesheet" href="css/styles.scss">  
     </head>    
-    <body  class="site-material_ext_publish section-material-design noninitial-chapter color-cyan qp-ui">
-        <div ng-include src="'partials/home2.html'">
-        
+    
+    <!--<body   class="site-material_ext_publish section-material-design noninitial-chapter color-cyan qp-ui"/>-->
+    
+    
+    <body background-size="100%" background-repeat="no-repeat">        
+        <div ng-include src="'partials/home2.html'"/>
         <!--<script src="lib/jquery/dist/jquery.js"/></script>-->
         <!--<script src="lib/jquery/dist/jquery.min.js"/></script>-->
         <script src="lib/angular/angular.js"></script>
@@ -105,6 +114,7 @@
         <script src="js/services/genero.js"></script>
         <script src="js/services/livro.js"></script>
         <script src="js/services/requisicao.js"></script>
+        <script src="js/services/services.js"></script>
         
         <script src="js/controllers/autor.js"></script>
         <script src="js/controllers/autores.js"></script>
