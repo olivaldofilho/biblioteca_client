@@ -15,7 +15,7 @@
                 </md-input-container> 
             </div>
         </md-card-content>                
-        <md-content layout-padding>
+        <md-content>
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -23,9 +23,13 @@
                             <th>ID</th>
                             <th>ISBN</th>
                             <th>TITULO</th>
-                            <th>DESCRIÇÃO</th>
+                            <th>QTD.</th>
+                            <th>QTD. D</th>
+                            <th>QTD. E</th>
+                            <!--<th>DESCRIÇÃO</th>-->
                             <th>LOCALIZAÇÃO</th>                            
                             <th>GENERO</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +37,10 @@
                             <td>{{livro.id}}</td>                            
                             <td>{{livro.isbn}}</td>
                             <td>{{livro.titulo}}</td>
-                            <td>{{livro.descricao}}</td>
+                            <!--<td>{{livro.descricao}}</td>-->
+                            <td>{{livro.quantidade}}</td>
+                            <td>{{livro.quantidade_disponivel}}</td>
+                            <td>{{livro.quantidade_emprestada}}</td>                         
                             <td>{{livro.localizacao}}</td>
                             <td>{{livro.descricao_genero}}</td>
                             <td>

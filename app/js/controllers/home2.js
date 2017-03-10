@@ -18,21 +18,21 @@ angular.module('biblioteca_client')
         });
   };
 
-    $scope.showLogin = function(ev) {
-        $mdDialog.show({
-            targetEvent: ev,
-            controller: "login",
-            controllerAs: 'vm',
-            templateUrl: "partials/login.html"
-        })
-        .then(function(cliente) {            
-            //$scope.requisicao.id_cliente = cliente.id;
-            //$scope.requisicao.nome_cliente = cliente.nome;         
-        }, function() {
-            //$scope.requisicao.nome_cliente = 'You cancelled the dialog.';
-        });
-        //console.log($scope.requisicao.nome_cliente);
-    };
+$scope.showLogin = function(ev) {
+    $mdDialog.show({
+        targetEvent: ev,
+        controller: "login",
+        controllerAs: 'vm',
+        templateUrl: "partials/login.html"
+    })
+    .then(function(cliente) {            
+        //$scope.requisicao.id_cliente = cliente.id;
+        //$scope.requisicao.nome_cliente = cliente.nome;         
+    }, function() {
+        //$scope.requisicao.nome_cliente = 'You cancelled the dialog.';
+    });
+    //console.log($scope.requisicao.nome_cliente);
+};
     
     
     $scope.heroImage = {
@@ -76,6 +76,11 @@ angular.module('biblioteca_client')
         {
             link : '#/requisicao',
             title: 'Requisição',
+            icon: 'list'
+        },
+        {
+            link : '#/requisicoespendentes',
+            title: 'Devolução',
             icon: 'list'
         }
     ];    

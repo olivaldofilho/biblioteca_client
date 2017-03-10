@@ -2,17 +2,12 @@ angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngM
     .config(function($routeProvider, $locationProvider, $mdDateLocaleProvider){
     //debugger;
     $routeProvider
-        .when('/autor/:id?', {
-            resolve: {
-                "check": function($location, $rootScope){
-                    if (!$rootScope.loggedIn){
-                        $location.path('/');
-                        return;                   
-                    }
-                }
-            }, 
+        .when('/autor/:id?', {            
             templateUrl: 'partials/autor.html',
-            controller: 'autor'
+            controller: 'autor',
+            resolve: {
+                factory: checkRouting
+            }
         })
         .when('/autores', {
             resolve: {
@@ -114,6 +109,18 @@ angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngM
             templateUrl: 'partials/requisicoes.html',
             controller: 'requisicoes'
         })
+        .when('/requisicoespendentes', {
+            resolve: {
+                "check": function($location, $rootScope){
+                    if (!$rootScope.loggedIn){
+                        $location.path('/');
+                        return;                   
+                    }
+                }
+            },
+            templateUrl: 'partials/requisicoespendentes.html',
+            controller: 'requisicoespendentes'
+        })
         .when('/genero/:id?', {
             resolve: {
                 "check": function($location, $rootScope){
@@ -147,7 +154,18 @@ angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngM
         })
         .otherwise({redirectTo: '/home'});
 
-    /*$routeProvider.when('/login', {
+    $locationProvider.hashPrefix('');    
+
+});
+
+var checkRouting = function ($q, $rootScope, $location) {
+    if (!$rootScope.loggedIn){
+        $location.path('/');
+        return;
+    };
+};
+
+/*$routeProvider.when('/login', {
         templateUrl: 'partials/login.html',
         controller: 'login'
     });
@@ -171,7 +189,5 @@ angular.module('biblioteca_client', ['ngRoute', 'ngResource', 'ngMaterial', 'ngM
         controller: 'livros'
     });*/
 
-    $locationProvider.hashPrefix('');    
     //$locationProvider.html5Mode({enabled: true, requireBase: false});
-    //$routeProvider.otherwise({redirectTo: '/home'});
-});
+    //$routeProvider.otherwise({redirectTo: '/home'});    

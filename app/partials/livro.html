@@ -64,7 +64,21 @@
                                     </md-option>
                                 </md-select>
                         </md-input-container>                                                                        
-                    </md-content>                    
+                    </md-content>
+                    <md-content layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm flex="33">
+                            <label>Quantidade</label>
+                            <input type="number" ng-model="livro.quantidade">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm flex="33">
+                            <label>Quantidade Disponível</label>
+                            <input type="number" ng-model="livro.quantidade_disponivel" disabled="">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm flex="33">
+                            <label>Quantidade Emprestada</label>
+                            <input type="number" ng-model="livro.quantidade_emprestada" disabled="">
+                        </md-input-container>
+                    </md-content>    
                 </form>
             </div>
         </md-card-content>
